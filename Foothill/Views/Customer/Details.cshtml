@@ -1,0 +1,21 @@
+﻿@model Foothill.Models.Customer
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Customer Details:</h2>
+
+<hr />
+<div class="container">
+    <div class="row">
+        <h2>
+            @Model.Name
+        </h2>
+        <br />
+        <strong>Membeship Type :</strong> @Model.MembershipType.Name
+        <br />
+        @(@Model.BirthDate == null ? "" : "Birth Date: " + Convert.ToDateTime(Model.BirthDate).ToShortDateString())
+    </div>
+</div>
+

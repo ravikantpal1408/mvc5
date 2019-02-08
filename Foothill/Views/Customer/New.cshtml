@@ -1,0 +1,46 @@
+﻿@model Foothill.ViewModels.CustomerViewModel
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>New Customer</h2>
+<hr />
+@using (Html.BeginForm("Create", "Customer", FormMethod.Post))
+{
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Customer.Name)
+                    @Html.TextBoxFor(m => m.Customer.Name, new { @class = "form-control" })
+
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Customer.BirthDate)
+                    @Html.TextBoxFor(m => m.Customer.BirthDate,"{0:d MMM yyyy}", new { @class = "form-control" })
+
+                </div>
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label>
+                            @Html.CheckBoxFor(m => m.Customer.IsSubscribed) <strong> Subscribed</strong>
+                        </label>
+                        
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Customer.MembershipTypeId)
+                    @Html.DropDownListFor(m => m.Customer.MembershipTypeId, new SelectList(Model.MembershipTypes,"Id","Name"),"Select Member Ship", new { @class = "form-control" })
+
+                </div>
+                @Html.HiddenFor(m=>m.Customer.Id)
+                <button type="submit" class="btn btn-success">Save Customer</button>
+            </div>
+
+        </div>
+
+    </div>
+}
+

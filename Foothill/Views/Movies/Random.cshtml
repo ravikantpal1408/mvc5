@@ -1,0 +1,16 @@
+﻿@model Foothill.ViewModels.RandomMovieViewModels
+
+@{
+    ViewBag.Title = "Random";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@( ((Foothill.Models.Movie)ViewData["Movie"]).Name)</h2>
+
+<br />
+@Model.Movies.Name
+<br />
+@foreach(var items in Model.Customers)
+{
+    <h3>@items.Name</h3><br />
+}

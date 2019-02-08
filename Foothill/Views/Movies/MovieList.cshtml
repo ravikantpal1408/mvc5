@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Foothill.Models.Cinema>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Movies :</h2>
+<hr />
+<div class="container">
+    <div class="row">
+        <table class="table table-bordered table-hover table-responsive table-striped" >
+            <thead>
+                <tr>
+                    <td><strong>Movies</strong></td>
+                    <td><strong>Genre</strong></td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var items in Model)
+                {
+                    <tr>
+                        <td> <a href="/Movies/MovieInfo/@items.Id">@items.Name</a></td>
+                        <td> @items.Genre.Name</td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+            
+
+            
+        
+
+    </div>
+
+</div>
+
