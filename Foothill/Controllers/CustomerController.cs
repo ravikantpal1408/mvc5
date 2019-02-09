@@ -56,19 +56,21 @@ namespace Foothill.Controllers
 
         // Create New Customer
         [HttpPost]
-        public ActionResult Create(Customer obj)
+        public ActionResult Create(CustomerViewModel obj)
         {
-            if(obj.Id!=0)
+            if (obj.Customer.Id != 0)
             {
-                var getCustomerData = _context.Customers.SingleOrDefault(x => x.Id == obj.Id);
-                getCustomerData.Name = obj.Name;
-                getCustomerData.IsSubscribed = obj.IsSubscribed;
-                getCustomerData.BirthDate = obj.BirthDate;
-                getCustomerData.MembershipTypeId = obj.MembershipTypeId;
+                var getCustomerData = _context.Customers.SingleOrDefault(x => x.Id == obj.Customer.Id);
+                getCustomerData.Name = obj.Customer.Name;
+                getCustomerData.IsSubscribed = obj.Customer.IsSubscribed;
+                getCustomerData.BirthDate = obj.Customer.BirthDate;
+                getCustomerData.MembershipTypeId = obj.Customer.MembershipTypeId;
+                _context.SaveChanges();
+                return RedirectToAction("Index", "Customer", new { msg = "updated" });
             }
-            _context.Customers.Add(obj);
+            _context.Customers.Add(obj.Customer);
             _context.SaveChanges();
-            return RedirectToAction("New", "Customer", new  { msg="success" });
+            return RedirectToAction("New", "Customer", new  { msg="created" });
         }
 
 
