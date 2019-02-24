@@ -5,16 +5,16 @@
 }
 
 
-<h3><strong>@Model.Name</strong></h3>
+<h3><strong>@Model.Name</strong> ( <a href="/Movies/Edit/@Model.Id">Edit</a> )</h3>
 <hr />
 <div class="container">
 
     <div class="row">
 
         <ul>
-            <li> Release Info : @Model.Day / @Model.Month / @Model.Year </li>
+            <li> Release Info : @Model.ReleaseDate.ToString("d MMM yyyy") </li>
             <li>Type : @Model.Genre.Name</li>
-            <li>Library Added Date : @Convert.ToDateTime(Model.CreatedDt).ToShortDateString()</li>
+            <li>Library Added Date : @Model.CreatedDt.ToString("d MMM yyyy")</li>
             <li>In Stock : @Model.InStock</li>
         </ul>
 
